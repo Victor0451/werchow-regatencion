@@ -19,7 +19,7 @@ const app = express();
 app.use(morgan('dev'));
 
 app.use(cors());
-app.set('port', process.env.PORT || 5000);
+app.set('port', process.env.PORT || 5001);
 
 
 //middlewares
@@ -34,7 +34,8 @@ app.use('/api/operador', operador);
 app.use('/api/auth', auth);
 
 
-
+process.env.NODE_ENV = 'production';
+console.log(process.env.NODE_ENV)
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {

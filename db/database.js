@@ -2,10 +2,10 @@ const Sequelize = require('sequelize');
 const db = {};
 
 const sequelize = new Sequelize({
-    host: '192.168.1.102',
+    host: '192.168.1.33',
     database: 'werchow_regatencion',
-    username: 'root',
-    password: 'root',
+    username: 'vlongo',
+    password: 'nokia5800',
     dialect: 'mysql',
     
 
@@ -16,6 +16,11 @@ const sequelize = new Sequelize({
         idle: 10000
     }
 });
+
+sequelize.sync({ force: true })
+  .then(() => {
+    console.log(`Database & tables created!`)
+  })
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

@@ -11,7 +11,7 @@ export const loadUser = () => (dispatch, getState) => {
     dispatch({ type: USER_LOADING });
 
 
-    axios.get('http://192.168.1.108:5000/api/auth/operador', tokenConfig(getState))
+    axios.get('http://192.168.1.33:5001/api/auth/operador', tokenConfig(getState))
         .then(res => dispatch({
             type: USER_LOADED,
             payload: res.data
@@ -26,7 +26,7 @@ export const loadUser = () => (dispatch, getState) => {
 
 //Register user
 
-export const register = ({ usuario, contrasena }) => dispatch => {
+export const register = ({ usuario, contrasena, nombre, apellido }) => dispatch => {
 
     //headers
     const config = {
@@ -37,9 +37,9 @@ export const register = ({ usuario, contrasena }) => dispatch => {
 
     //Req body
 
-    const body = JSON.stringify({ usuario, contrasena });
+    const body = JSON.stringify({ usuario, contrasena, nombre, apellido });
 
-    axios.post('http://192.168.1.108:5000/api/operador/postoperador', body, config)
+    axios.post('http://192.168.1.33:5001/api/operador/postoperador', body, config)
         .then(res => dispatch({
             type: REGISTER_SUCCESS,
             payload: res.data
@@ -69,7 +69,7 @@ export const login = ({ usuario, contrasena }) => dispatch => {
 
     const body = JSON.stringify({ usuario, contrasena });
 
-    axios.post('http://192.168.1.108:5000/api/auth/auth', body, config)
+    axios.post('http://192.168.1.33:5001/api/auth/auth', body, config)
         .then(res => dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data

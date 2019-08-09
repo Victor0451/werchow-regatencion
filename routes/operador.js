@@ -20,7 +20,7 @@ router.get('/operadores', auth, (req, res, next) => {
 
 
 router.post("/postoperador", (req, res, next) => {
-    const { usuario, contrasena } = req.body;
+    const { usuario, contrasena, apellido, nombre } = req.body;
 
     //Validacion simple
 
@@ -42,6 +42,8 @@ router.post("/postoperador", (req, res, next) => {
             const newOperador = {
                 usuario,
                 contrasena,
+                nombre,
+                apellido,
                 perfil: 'usuario',
                 estado: 'ACTIVO'
             };
@@ -69,6 +71,8 @@ router.post("/postoperador", (req, res, next) => {
                                             id: user.id,
                                             usuario: user.usuario,
                                             contrasena: user.contrasena,
+                                            nombre:user.nombre,
+                                            apellido: user.apellido,
                                             perfil: user.perfil,
                                             estado: user.estado,
                                             createdAt: user.createdAt,

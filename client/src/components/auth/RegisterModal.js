@@ -21,6 +21,8 @@ class RegisterModal extends Component {
         modal: false,
         usuario: '',
         contrasena: '',
+        nombre: '',
+        apellido: '',
         msg: null
     };
 
@@ -42,7 +44,7 @@ class RegisterModal extends Component {
             }
         }
 
-       // If authenticated, close modal
+        // If authenticated, close modal
         if (this.state.modal) {
             if (isAuthenticated) {
                 this.toggle();
@@ -65,16 +67,19 @@ class RegisterModal extends Component {
     onSubmit = e => {
         e.preventDefault();
 
-        const { usuario, contrasena } = this.state;
+        const { usuario, contrasena, apellido, nombre } = this.state;
 
         // Create user object
         const newOperador = {
             usuario,
-            contrasena
-        };
+            contrasena,
+            apellido,
+            nombre
+        }; 
 
         // Attempt to register
         this.props.register(newOperador);
+     
     };
 
     render() {
@@ -92,32 +97,42 @@ class RegisterModal extends Component {
                         ) : null}
                         <Form onSubmit={this.onSubmit}>
                             <FormGroup>
-                                <Label for='name'>Name</Label>
+                                <Label for='usuario'>Usuario</Label>
                                 <Input
                                     type='text'
-                                    name='name'
-                                    id='name'
-                                    placeholder='Name'
+                                    name='usuario'
+                                    id='usuario'
+                                    placeholder='Usuario'
                                     className='mb-3'
                                     onChange={this.onChange}
                                 />
 
-                                <Label for='email'>Email</Label>
+                                <Label for='contrasena'>Contraseña</Label>
                                 <Input
-                                    type='email'
-                                    name='email'
-                                    id='email'
-                                    placeholder='Email'
+                                    type='text'
+                                    name='contrasena'
+                                    id='contrasena'
+                                    placeholder='Contraseña'
                                     className='mb-3'
                                     onChange={this.onChange}
                                 />
 
-                                <Label for='password'>Password</Label>
+                                <Label for='nombre'>Nombre</Label>
                                 <Input
-                                    type='password'
-                                    name='password'
-                                    id='password'
-                                    placeholder='Password'
+                                    type='text'
+                                    name='nombre'
+                                    id='nombre'
+                                    placeholder='Nombre'
+                                    className='mb-3'
+                                    onChange={this.onChange}
+                                />
+
+                                <Label for='apellido'>Apellido</Label>
+                                <Input
+                                    type='text'
+                                    name='apellido'
+                                    id='apellido'
+                                    placeholder='Apellido'
                                     className='mb-3'
                                     onChange={this.onChange}
                                 />
