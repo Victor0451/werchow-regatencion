@@ -90,7 +90,7 @@ class ListadoAtenciones extends Component {
         }
         console.log(this.props)
 
-        if (Object.entries(atenciones).length === 0) return <Spinner />
+        if (Object.entries(atenciones).length === 0) return <Spinner />              
 
         return (
             <div className="container">

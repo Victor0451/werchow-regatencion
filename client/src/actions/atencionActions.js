@@ -4,7 +4,7 @@ import { tokenConfig } from './authActions';
 import { returnErrors } from './errorActions'
 
 export const mostrarAtenciones = () => async dispatch => {
-    const respuesta = await axios.get(`http://192.168.1.33:5001/api/atencion/atenciones`);
+    const respuesta = await axios.get(`http://192.168.1.102:5001/api/atencion/atenciones`);
 
     dispatch({
         type: MOSTRAR_ATENCIONES,
@@ -13,7 +13,7 @@ export const mostrarAtenciones = () => async dispatch => {
 }
 
 export const mostrarAtencion = id => async dispatch => {
-    const respuesta = await axios.get(`http://192.168.1.33:5001/getlocadorselect/${id}`);
+    const respuesta = await axios.get(`http://192.168.1.102:5001/getlocadorselect/${id}`);
 
     dispatch({
         type: MOSTRAR_ATENCION,
@@ -22,7 +22,7 @@ export const mostrarAtencion = id => async dispatch => {
 };
 
 export const agregarAtencion = atencion => async (dispatch, getState) => {
-    await axios.post("http://192.168.1.33:5001/api/atencion/postatencion", atencion, tokenConfig(getState))
+    await axios.post("http://192.168.1.102:5001/api/atencion/postatencion", atencion, tokenConfig(getState))
         .then(res => dispatch({
             type: INSERTAR_ATENCION,
             payload: res.data
@@ -32,7 +32,7 @@ export const agregarAtencion = atencion => async (dispatch, getState) => {
 
 // export const agregarAtencion = atencion => (dispatch, getState) => {
 //     const respuesta = axios.post(
-//         "192.168.1.33:5001/api/atencion/postatencion",
+//         "192.168.1.102:5001/api/atencion/postatencion",
 //         atencion,
 //         tokenConfig(getState)
 //     )
@@ -53,7 +53,7 @@ export const agregarAtencion = atencion => async (dispatch, getState) => {
 //     });
 // };
 // export const borrarProducto = id => async dispatch => {
-//   await axios.delete(`http://192.168.1.33:5001/productos/${id}`);
+//   await axios.delete(`http://192.168.1.102:5001/productos/${id}`);
 
 //   dispatch({
 //     type: ELIMINAR_PRODUCTO,
@@ -65,7 +65,7 @@ export const agregarAtencion = atencion => async (dispatch, getState) => {
 
   // export const editarProducto = producto => async dispatch => {
   //   const respuesta = await axios.put(
-  //     `http://192.168.1.33:5001/productos/${producto.id}`,
+  //     `http://192.168.1.102:5001/productos/${producto.id}`,
   //     producto
   //   );
 

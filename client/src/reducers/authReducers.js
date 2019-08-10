@@ -31,8 +31,9 @@ export default function (state = initialState, action) {
                 user: JSON.parse(sessionStorage.getItem('user'))
             };
 
+            
         case LOGIN_SUCCESS:
-
+            
         case REGISTER_SUCCESS:
             sessionStorage.setItem('token', action.payload.token);
             sessionStorage.setItem('user', JSON.stringify(action.payload.user));

@@ -23,8 +23,11 @@ class Navbar extends Component {
 
             <Fragment >
                 <span className="badge badge-light text-uppercase mt-2">
-                    {user ? `Bienvenido  ${user.usuario}` : ''}
+                    {user   ? `Bienvenido  ${user.usuario}`   : ''}
                 </span>
+
+                {user && user.perfil === 'admin' ? <RegisterModal /> : ''}
+
                 <Logout />
 
             </Fragment>
@@ -35,11 +38,8 @@ class Navbar extends Component {
         const guestLinks = (
             <Fragment >
 
-                <RegisterModal />
-
-
                 <LoginModal />
-
+                
             </Fragment>
         );
 
@@ -56,7 +56,7 @@ class Navbar extends Component {
 
                 <div className="collapse navbar-collapse" id="navbarColor01">
                     <ul className="navbar-nav mr-auto">
-                        
+
                         {isAuthenticated ?
                             <li className="nav-item dropdown">
                                 <Link to="" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Atenciones</Link>
