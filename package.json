@@ -6,10 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client-install": "npm install --prefix client",
-    "start": "node server.js",
+    "start": "cross-env NODE_ENV=production node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "npm run build --prefix client",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "",
@@ -28,6 +29,7 @@
     "sequelize-cli": "^5.5.0"
   },
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "nodemon": "^1.19.1"
   }
 }

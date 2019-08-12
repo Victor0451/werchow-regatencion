@@ -2,7 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
-const db = require('./db/database')
+const db = require('./db/database');
+const crossenv = require('cross-env')
 
 
 //import route 
@@ -33,18 +34,22 @@ app.use('/api/atencion', atencion);
 app.use('/api/operador', operador);
 app.use('/api/auth', auth);
 
+console.log(crossenv.NODE_ENV)
 
-process.env.NODE_ENV = 'production';
-console.log(process.env.NODE_ENV)
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
+
+    console.log(process.env.NODE_ENV)
+
     // Set static folder
     app.use(express.static('client/build'));
 
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
+} else {
+    console.log(process.env.NODE_ENV)
 };
 
 
